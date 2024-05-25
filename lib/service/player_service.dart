@@ -11,14 +11,12 @@ class PlayerService {
   final ApiService _apiService = ApiService();
 
   Future<List<PlayerModel>> getPlayers() async {
-    final response = await _apiService.request(search: "player");
+    final response = await _apiService.request(search: "players");
 
     List data = response["data"];
 
-    if (response.containsKey(["data"])) {
-      return data.map((json) => PlayerModel.fromJson(json)).toList();
-    } else {
-      throw Exception('No data found');
-    }
+    print("API response: ${data}");
+
+    return data.map((json) => PlayerModel.fromJson(json)).toList();
   }
 }

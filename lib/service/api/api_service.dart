@@ -12,13 +12,18 @@ class ApiService {
   final Dio _dio = Dio();
 
   Future<Map<String, dynamic>> request({required String search}) async {
-    String url = "https://api.balldontlie.io/v1/$search";
+    String url = "https://api.balldontlie.io/v1/$search/?per_page=100";
 
     try {
-      _dio.options.headers["authorization"] = apiKey;
+      //_dio.options.headers["authorization"] = apiKey;
 
-      final response = await _dio.get(url);
-      print(response.data.toString());
+      final response = await _dio.get(
+        url,
+        options: Options(
+          headers: {"authorization": apiKey},
+        ),
+      );
+      //print(response.data.toString());
 
       if (response.statusCode == 200) {
         return response.data;

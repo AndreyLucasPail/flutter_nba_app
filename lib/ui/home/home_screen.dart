@@ -5,6 +5,8 @@ import 'package:nba_app_flutter/service/player_service.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  static const tag = "/home";
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -36,10 +38,21 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         : ListView.builder(
             itemCount: playerList.length,
-            itemBuilder: (context, snapshot) {
-              final player = playerList[snapshot];
+            itemBuilder: (context, index) {
+              final player = playerList[index];
               return ListTile(
-                title: Text(player.firstName!),
+                title: Text(
+                  player.firstName!,
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                subtitle: Text(
+                  player.lastName!,
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
               );
             },
           );

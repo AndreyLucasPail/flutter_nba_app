@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nba_app_flutter/models/player_model.dart';
 import 'package:nba_app_flutter/service/player_service.dart';
+import 'package:nba_app_flutter/ui/home/widget/player_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,23 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircularProgressIndicator(),
           )
         : ListView.builder(
+            padding: const EdgeInsets.all(16.0),
             itemCount: playerList.length,
             itemBuilder: (context, index) {
-              final player = playerList[index];
-              return ListTile(
-                title: Text(
-                  player.firstName!,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: Text(
-                  player.lastName!,
-                  style: const TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              );
+              return PlayerCard(player: playerList[index]);
             },
           );
   }

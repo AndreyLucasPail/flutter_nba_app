@@ -11,8 +11,8 @@ class ApiService {
 
   final Dio _dio = Dio();
 
-  Future<Map<String, dynamic>> request({required String search}) async {
-    String url = "https://api.balldontlie.io/v1/$search/?per_page=100";
+  Future<Map<String, dynamic>> request({required String query}) async {
+    String url = "https://api.balldontlie.io/v1/$query";
 
     try {
       //_dio.options.headers["authorization"] = apiKey;

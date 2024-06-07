@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiService {
   static final ApiService _instance = ApiService.internal();
@@ -8,16 +7,14 @@ class ApiService {
 
   ApiService.internal();
 
-  final String apiKey = dotenv.env["API_KEY"]!;
+  final String apiKey = "d6cdad22-826f-4c38-b2cb-2b443a55f67c";
 
   final Dio _dio = Dio();
 
   Future<Map<String, dynamic>> request({required String query}) async {
-    String url = "${dotenv.env["BASE_URL"]}$query";
+    String url = "https://api.balldontlie.io/v1/$query";
 
     try {
-      //_dio.options.headers["authorization"] = apiKey;
-
       final response = await _dio.get(
         url,
         options: Options(
